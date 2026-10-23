@@ -1,0 +1,180 @@
+{
+ "actions": [],
+ "allow_auto_repeat": 0,
+ "allow_bulk_edit": 1,
+ "allow_copy": 0,
+ "allow_events_in_timeline": 0,
+ "allow_guest_to_view": 0,
+ "allow_import": 0,
+ "allow_rename": 1,
+ "beta": 0,
+ "description": "Approval rules, alert windows and cost-category mapping used by the Fit Out workspace.",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "email_append_to": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "approval_section",
+  "variation_approval_threshold",
+  "additional_approver",
+  "col1",
+  "commercial_reviewer",
+  "require_client_approval",
+  "alerts_section",
+  "due_soon_days",
+  "col2",
+  "handover_window_days",
+  "cost_section",
+  "materials_keywords",
+  "labour_keywords",
+  "subcontract_keywords"
+ ],
+ "fields": [
+  {
+   "fieldname": "approval_section",
+   "fieldtype": "Section Break",
+   "label": "Variation Approval Rules"
+  },
+  {
+   "default": "10000",
+   "description": "Variations above this value need the additional management approval.",
+   "fieldname": "variation_approval_threshold",
+   "fieldtype": "Currency",
+   "label": "Approval Threshold (Selling Value)"
+  },
+  {
+   "default": "Managing Director",
+   "fieldname": "additional_approver",
+   "fieldtype": "Data",
+   "label": "Additional Approver Role"
+  },
+  {
+   "fieldname": "col1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Commercial Manager",
+   "fieldname": "commercial_reviewer",
+   "fieldtype": "Data",
+   "label": "Commercial Reviewer"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_client_approval",
+   "fieldtype": "Check",
+   "label": "Require Client Approval for All Variations"
+  },
+  {
+   "fieldname": "alerts_section",
+   "fieldtype": "Section Break",
+   "label": "Alerts"
+  },
+  {
+   "default": "3",
+   "fieldname": "due_soon_days",
+   "fieldtype": "Int",
+   "label": "Due Soon Window (days)"
+  },
+  {
+   "fieldname": "col2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "60",
+   "fieldname": "handover_window_days",
+   "fieldtype": "Int",
+   "label": "Upcoming Handover Window (days)"
+  },
+  {
+   "description": "Project expense postings are grouped by the words in the account name. Anything that matches none of these is Other Direct Costs.",
+   "fieldname": "cost_section",
+   "fieldtype": "Section Break",
+   "label": "Actual Cost Categories"
+  },
+  {
+   "default": "material,stock,cost of goods,cogs,purchase",
+   "fieldname": "materials_keywords",
+   "fieldtype": "Data",
+   "label": "Materials Accounts Contain"
+  },
+  {
+   "default": "labour,labor,salary,wage,payroll",
+   "fieldname": "labour_keywords",
+   "fieldtype": "Data",
+   "label": "Direct Labour Accounts Contain"
+  },
+  {
+   "default": "subcontract,sub-contract,contractor",
+   "fieldname": "subcontract_keywords",
+   "fieldtype": "Data",
+   "label": "Subcontractor Accounts Contain"
+  }
+ ],
+ "force_re_route_to_default_view": 0,
+ "grid_page_length": 50,
+ "has_web_view": 0,
+ "hide_toolbar": 0,
+ "in_create": 0,
+ "index_web_pages_for_search": 1,
+ "is_calendar_and_gantt": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "is_virtual": 0,
+ "issingle": 1,
+ "istable": 0,
+ "links": [],
+ "make_attachments_public": 0,
+ "max_attachments": 0,
+ "modified": "2026-10-23 10:00:00.000000",
+ "module": "Fitout",
+ "name": "Fit Out Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Projects Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Projects User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "protect_attached_files": 0,
+ "queue_in_background": 0,
+ "quick_entry": 0,
+ "read_only": 0,
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "show_name_in_global_search": 0,
+ "show_preview_popup": 0,
+ "show_title_field_in_link": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 0,
+ "track_views": 0,
+ "translated_doctype": 0
+}

@@ -1,0 +1,319 @@
+{
+ "actions": [],
+ "allow_auto_repeat": 0,
+ "allow_bulk_edit": 1,
+ "allow_copy": 0,
+ "allow_events_in_timeline": 0,
+ "allow_guest_to_view": 0,
+ "allow_import": 0,
+ "allow_rename": 1,
+ "autoname": "VAR-.YYYY.-.####",
+ "beta": 0,
+ "description": "Variation / change order raised on a fit-out project.",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "email_append_to": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "project",
+  "project_name",
+  "company",
+  "customer",
+  "col1",
+  "status",
+  "variation_type",
+  "raised_by",
+  "raised_on",
+  "value",
+  "cost_impact",
+  "approval_reference",
+  "workflow_section",
+  "scope_reviewed_on",
+  "cost_assessed_on",
+  "quotation_issued_on",
+  "quotation",
+  "wf_col",
+  "management_approval_required",
+  "management_approved_by",
+  "management_approved_on",
+  "action_section",
+  "next_action",
+  "action_owner",
+  "col2",
+  "action_due",
+  "decision_date",
+  "details_section",
+  "description",
+  "attachment"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Variation Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "project.company",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "project.customer",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Client",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nSubmitted to Client\nUnder Review\nApproved\nRejected\nCancelled",
+   "reqd": 1
+  },
+  {
+   "default": "Addition",
+   "fieldname": "variation_type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Addition\nOmission\nSubstitution\nRate Change"
+  },
+  {
+   "fieldname": "raised_by",
+   "fieldtype": "Select",
+   "label": "Request Source",
+   "options": "Client\nContractor\nConsultant\nDesign Revision\nSite Condition\nAuthority"
+  },
+  {
+   "default": "Today",
+   "fieldname": "raised_on",
+   "fieldtype": "Date",
+   "label": "Raised On"
+  },
+  {
+   "description": "Value charged to the client (negative for omissions).",
+   "fieldname": "value",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Proposed Selling Value"
+  },
+  {
+   "description": "Change to the project cost budget if approved (negative for omissions).",
+   "fieldname": "cost_impact",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Cost Impact"
+  },
+  {
+   "description": "Client change order / approval number, e.g. CO-PRJ001-001",
+   "fieldname": "approval_reference",
+   "fieldtype": "Data",
+   "label": "Approval Reference"
+  },
+  {
+   "fieldname": "workflow_section",
+   "fieldtype": "Section Break",
+   "label": "Approval Workflow"
+  },
+  {
+   "fieldname": "scope_reviewed_on",
+   "fieldtype": "Date",
+   "label": "Scope Reviewed"
+  },
+  {
+   "fieldname": "cost_assessed_on",
+   "fieldtype": "Date",
+   "label": "Cost Assessed"
+  },
+  {
+   "fieldname": "quotation_issued_on",
+   "fieldtype": "Date",
+   "label": "Client Quotation Issued"
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Client Quotation",
+   "options": "Quotation"
+  },
+  {
+   "fieldname": "wf_col",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Set automatically when the value exceeds the threshold in Fit Out Settings.",
+   "fieldname": "management_approval_required",
+   "fieldtype": "Check",
+   "label": "Management Approval Required",
+   "read_only": 1
+  },
+  {
+   "depends_on": "management_approval_required",
+   "fieldname": "management_approved_by",
+   "fieldtype": "Link",
+   "label": "Management Approved By",
+   "options": "User"
+  },
+  {
+   "depends_on": "management_approval_required",
+   "fieldname": "management_approved_on",
+   "fieldtype": "Date",
+   "label": "Management Approved On"
+  },
+  {
+   "fieldname": "action_section",
+   "fieldtype": "Section Break",
+   "label": "Next Action"
+  },
+  {
+   "description": "Shown on the dashboard, e.g. Review the variation with client.",
+   "fieldname": "next_action",
+   "fieldtype": "Data",
+   "label": "Next Action"
+  },
+  {
+   "fieldname": "action_owner",
+   "fieldtype": "Link",
+   "label": "Action Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "col2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "action_due",
+   "fieldtype": "Date",
+   "label": "Action Due"
+  },
+  {
+   "depends_on": "eval:in_list(['Approved','Rejected'], doc.status)",
+   "fieldname": "decision_date",
+   "fieldtype": "Date",
+   "label": "Client Decision Date"
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Supporting Document"
+  }
+ ],
+ "force_re_route_to_default_view": 0,
+ "grid_page_length": 50,
+ "has_web_view": 0,
+ "hide_toolbar": 0,
+ "in_create": 0,
+ "index_web_pages_for_search": 1,
+ "is_calendar_and_gantt": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "is_virtual": 0,
+ "issingle": 0,
+ "istable": 0,
+ "links": [],
+ "make_attachments_public": 0,
+ "max_attachments": 0,
+ "modified": "2026-10-23 10:00:00.000000",
+ "module": "Fitout",
+ "name": "Fit Out Variation",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "protect_attached_files": 0,
+ "queue_in_background": 0,
+ "quick_entry": 0,
+ "read_only": 0,
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "title,project",
+ "show_name_in_global_search": 0,
+ "show_preview_popup": 0,
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1,
+ "track_seen": 0,
+ "track_views": 0,
+ "translated_doctype": 0
+}

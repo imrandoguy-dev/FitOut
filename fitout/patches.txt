@@ -1,0 +1,4 @@
+# Patches applied on bench migrate, in order.
+[pre_model_sync]
+
+[post_model_sync]

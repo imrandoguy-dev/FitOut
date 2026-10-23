@@ -1,0 +1,538 @@
+{
+ "actions": [],
+ "allow_auto_repeat": 0,
+ "allow_bulk_edit": 1,
+ "allow_copy": 0,
+ "allow_events_in_timeline": 0,
+ "allow_guest_to_view": 0,
+ "allow_import": 0,
+ "allow_rename": 0,
+ "autoname": "format:EST-{project}-REV{rev_no}",
+ "beta": 0,
+ "description": "Fit-out estimate / Bill of Quantities for a project, with cost build-up, approval history and budget baseline.",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "email_append_to": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "details_tab",
+  "project",
+  "project_name",
+  "customer",
+  "customer_name",
+  "company",
+  "col_d1",
+  "estimate_type",
+  "revision",
+  "previous_revision",
+  "superseded_by",
+  "currency",
+  "col_d2",
+  "status",
+  "estimate_date",
+  "prepared_by",
+  "items_section",
+  "items",
+  "pricing_section",
+  "overhead_percent",
+  "target_margin_percent",
+  "selling_price",
+  "col_p1",
+  "total_material",
+  "total_labour",
+  "total_subcontract",
+  "total_other",
+  "col_p2",
+  "total_direct_cost",
+  "overhead_amount",
+  "total_project_cost",
+  "gross_profit",
+  "gross_margin_percent",
+  "approval_tab",
+  "prepared_on",
+  "reviewed_on",
+  "reviewed_by",
+  "quotation_submitted_on",
+  "col_a1",
+  "client_approved_on",
+  "contract_awarded_on",
+  "baseline_on",
+  "col_a2",
+  "rejected_on",
+  "rejection_reason",
+  "quotation",
+  "budget_section",
+  "budget_status",
+  "baseline_reference",
+  "col_b1",
+  "baseline_source",
+  "change_control",
+  "notes_tab",
+  "scope_of_work",
+  "assumptions",
+  "exclusions",
+  "notes",
+  "rev_no"
+ ],
+ "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Estimate"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "project.customer",
+   "fetch_if_empty": 1,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Client",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Client Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "project.company",
+   "fetch_if_empty": 1,
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_d1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Original",
+   "fieldname": "estimate_type",
+   "fieldtype": "Select",
+   "label": "Estimate Type",
+   "options": "Original\nRevised"
+  },
+  {
+   "fieldname": "revision",
+   "fieldtype": "Int",
+   "label": "Revision",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "previous_revision",
+   "fieldtype": "Link",
+   "label": "Previous Revision",
+   "no_copy": 1,
+   "options": "Fit Out BOQ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "superseded_by",
+   "fieldtype": "Link",
+   "label": "Superseded By",
+   "no_copy": 1,
+   "options": "Fit Out BOQ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "col_d2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "no_copy": 1,
+   "options": "Draft\nUnder Review\nInternally Approved\nQuotation Submitted\nClient Approved\nContract Awarded\nBaseline Established\nRejected\nSuperseded",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "estimate_date",
+   "fieldtype": "Date",
+   "label": "Estimate Date",
+   "no_copy": 1
+  },
+  {
+   "default": "__user",
+   "fieldname": "prepared_by",
+   "fieldtype": "Link",
+   "label": "Prepared By",
+   "no_copy": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Bill of Quantities"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "BOQ Items",
+   "options": "Fit Out BOQ Item"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Overhead & Pricing"
+  },
+  {
+   "default": "7.5",
+   "description": "Applied on total direct cost",
+   "fieldname": "overhead_percent",
+   "fieldtype": "Percent",
+   "label": "Overhead %"
+  },
+  {
+   "default": "20",
+   "description": "Used to suggest the selling price when Proposed Selling Price is empty",
+   "fieldname": "target_margin_percent",
+   "fieldtype": "Percent",
+   "label": "Target Gross Margin %"
+  },
+  {
+   "fieldname": "selling_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Proposed Selling Price (Before Tax)",
+   "options": "currency"
+  },
+  {
+   "fieldname": "col_p1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_material",
+   "fieldtype": "Currency",
+   "label": "Direct Material Cost",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_labour",
+   "fieldtype": "Currency",
+   "label": "Direct Labour Cost",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_subcontract",
+   "fieldtype": "Currency",
+   "label": "Subcontractor Cost",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_other",
+   "fieldtype": "Currency",
+   "label": "Other Direct Costs",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_p2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_direct_cost",
+   "fieldtype": "Currency",
+   "label": "Total Estimated Direct Cost",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "overhead_amount",
+   "fieldtype": "Currency",
+   "label": "Overhead Allocation",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_project_cost",
+   "fieldtype": "Currency",
+   "label": "Total Estimated Project Cost",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gross_profit",
+   "fieldtype": "Currency",
+   "label": "Indicative Gross Profit",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gross_margin_percent",
+   "fieldtype": "Percent",
+   "label": "Indicative Gross Margin %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approval_tab",
+   "fieldtype": "Tab Break",
+   "label": "Approval"
+  },
+  {
+   "default": "Today",
+   "fieldname": "prepared_on",
+   "fieldtype": "Date",
+   "label": "Estimate Prepared",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "reviewed_on",
+   "fieldtype": "Date",
+   "label": "Internal Commercial Review",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "reviewed_by",
+   "fieldtype": "Link",
+   "label": "Reviewed By",
+   "no_copy": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "quotation_submitted_on",
+   "fieldtype": "Date",
+   "label": "Quotation Submitted",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "col_a1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "client_approved_on",
+   "fieldtype": "Date",
+   "label": "Client Approval",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "contract_awarded_on",
+   "fieldtype": "Date",
+   "label": "Contract Award",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "baseline_on",
+   "fieldtype": "Date",
+   "label": "Budget Baseline Established",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "col_a2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rejected_on",
+   "fieldtype": "Date",
+   "label": "Rejected On",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Latest Quotation",
+   "no_copy": 1,
+   "options": "Quotation"
+  },
+  {
+   "fieldname": "budget_section",
+   "fieldtype": "Section Break",
+   "label": "Project Budget Baseline"
+  },
+  {
+   "default": "Not Established",
+   "fieldname": "budget_status",
+   "fieldtype": "Select",
+   "label": "Budget Status",
+   "no_copy": 1,
+   "options": "Not Established\nOriginal Baseline\nRevised Baseline",
+   "read_only": 1
+  },
+  {
+   "fieldname": "baseline_reference",
+   "fieldtype": "Data",
+   "label": "Baseline Reference",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_b1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "baseline_source",
+   "fieldtype": "Data",
+   "label": "Source",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "Approved Revisions Only",
+   "fieldname": "change_control",
+   "fieldtype": "Select",
+   "label": "Change Control",
+   "options": "Approved Revisions Only\nOpen"
+  },
+  {
+   "fieldname": "notes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "scope_of_work",
+   "fieldtype": "Text Editor",
+   "label": "Scope of Work"
+  },
+  {
+   "fieldname": "assumptions",
+   "fieldtype": "Small Text",
+   "label": "Assumptions"
+  },
+  {
+   "fieldname": "exclusions",
+   "fieldtype": "Small Text",
+   "label": "Exclusions"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Internal Notes"
+  },
+  {
+   "fieldname": "rev_no",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Revision No.",
+   "no_copy": 1,
+   "read_only": 1
+  }
+ ],
+ "force_re_route_to_default_view": 0,
+ "grid_page_length": 50,
+ "has_web_view": 0,
+ "hide_toolbar": 0,
+ "in_create": 0,
+ "index_web_pages_for_search": 1,
+ "is_calendar_and_gantt": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "is_virtual": 0,
+ "issingle": 0,
+ "istable": 0,
+ "links": [],
+ "make_attachments_public": 0,
+ "max_attachments": 0,
+ "modified": "2026-10-23 10:00:00.000000",
+ "module": "Fitout",
+ "name": "Fit Out BOQ",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "protect_attached_files": 0,
+ "queue_in_background": 0,
+ "quick_entry": 0,
+ "read_only": 0,
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "project,project_name,customer_name,status",
+ "show_name_in_global_search": 0,
+ "show_preview_popup": 0,
+ "show_title_field_in_link": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "project_name",
+ "track_changes": 1,
+ "track_seen": 0,
+ "track_views": 0,
+ "translated_doctype": 0
+}

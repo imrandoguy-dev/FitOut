@@ -1,0 +1,27 @@
+[
+ {
+  "dt": "Project",
+  "fieldname": "custom_project_manager",
+  "fieldtype": "Link",
+  "label": "Project Manager",
+  "options": "User",
+  "insert_after": "fo_location",
+  "depends_on": "eval:doc.fo_is_fitout"
+ },
+ {
+  "dt": "Project",
+  "fieldname": "custom_contract_value",
+  "fieldtype": "Currency",
+  "label": "Contract Value",
+  "insert_after": "custom_project_manager",
+  "depends_on": "eval:doc.fo_is_fitout"
+ },
+ {
+  "dt": "Task",
+  "fieldname": "custom_assign_to",
+  "fieldtype": "Link",
+  "label": "Assign To",
+  "options": "User",
+  "insert_after": "fo_work_package"
+ }
+]

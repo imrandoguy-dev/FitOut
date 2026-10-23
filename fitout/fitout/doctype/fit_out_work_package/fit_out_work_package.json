@@ -1,0 +1,302 @@
+{
+ "actions": [],
+ "allow_auto_repeat": 0,
+ "allow_bulk_edit": 1,
+ "allow_copy": 0,
+ "allow_events_in_timeline": 0,
+ "allow_guest_to_view": 0,
+ "allow_import": 0,
+ "allow_rename": 1,
+ "autoname": "WP-.#####",
+ "beta": 0,
+ "description": "A package of fit-out work on a project (e.g. ceiling installation), usually given to one subcontractor.",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "email_append_to": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "package_title",
+  "project",
+  "project_name",
+  "company",
+  "work_section",
+  "boq",
+  "col1",
+  "subcontractor",
+  "purchase_order",
+  "responsible",
+  "status",
+  "progress_section",
+  "planned_start",
+  "planned_finish",
+  "col2",
+  "actual_start",
+  "actual_finish",
+  "col3",
+  "progress_method",
+  "actual_progress",
+  "planned_progress",
+  "inspection_section",
+  "inspection_required",
+  "inspection_status",
+  "col4",
+  "commercial_status",
+  "measured_value",
+  "notes_section",
+  "scope"
+ ],
+ "fields": [
+  {
+   "fieldname": "package_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Work Package",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "project.company",
+   "fetch_if_empty": 1,
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "work_section",
+   "fieldtype": "Data",
+   "label": "BOQ Work Section"
+  },
+  {
+   "fieldname": "boq",
+   "fieldtype": "Link",
+   "label": "Estimate (BOQ)",
+   "options": "Fit Out BOQ"
+  },
+  {
+   "fieldname": "col1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "subcontractor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Subcontractor",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Subcontract PO",
+   "options": "Purchase Order"
+  },
+  {
+   "fieldname": "responsible",
+   "fieldtype": "Link",
+   "label": "Responsible",
+   "options": "User"
+  },
+  {
+   "default": "Not Started",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Not Started\nIn Progress\nOn Hold\nCompleted\nCancelled"
+  },
+  {
+   "fieldname": "progress_section",
+   "fieldtype": "Section Break",
+   "label": "Schedule & Progress"
+  },
+  {
+   "fieldname": "planned_start",
+   "fieldtype": "Date",
+   "label": "Planned Start"
+  },
+  {
+   "fieldname": "planned_finish",
+   "fieldtype": "Date",
+   "label": "Planned Finish"
+  },
+  {
+   "fieldname": "col2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_start",
+   "fieldtype": "Date",
+   "label": "Actual Start"
+  },
+  {
+   "fieldname": "actual_finish",
+   "fieldtype": "Date",
+   "label": "Actual Finish"
+  },
+  {
+   "fieldname": "col3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Activities",
+   "description": "Activities: average of the tasks linked to this package. Manual: enter Actual Progress yourself.",
+   "fieldname": "progress_method",
+   "fieldtype": "Select",
+   "label": "Progress From",
+   "options": "Activities\nManual"
+  },
+  {
+   "fieldname": "actual_progress",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Actual Progress"
+  },
+  {
+   "description": "From the planned dates, as of the last save",
+   "fieldname": "planned_progress",
+   "fieldtype": "Percent",
+   "label": "Planned Progress",
+   "read_only": 1
+  },
+  {
+   "fieldname": "inspection_section",
+   "fieldtype": "Section Break",
+   "label": "Inspection & Commercial"
+  },
+  {
+   "default": "1",
+   "fieldname": "inspection_required",
+   "fieldtype": "Check",
+   "label": "Inspection Required"
+  },
+  {
+   "default": "Not Requested",
+   "fieldname": "inspection_status",
+   "fieldtype": "Select",
+   "label": "Inspection Status",
+   "options": "Not Requested\nRequested\nAwaiting Sign-Off\nPassed\nFailed\nNot Applicable",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Not Submitted",
+   "fieldname": "commercial_status",
+   "fieldtype": "Select",
+   "label": "Commercial Status",
+   "options": "Not Submitted\nMeasurement Submitted\nMeasurement Review Pending\nPending Review\nCertified\nInvoiced"
+  },
+  {
+   "fieldname": "measured_value",
+   "fieldtype": "Currency",
+   "label": "Measured Value"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "scope",
+   "fieldtype": "Small Text",
+   "label": "Scope / Notes"
+  }
+ ],
+ "force_re_route_to_default_view": 0,
+ "grid_page_length": 50,
+ "has_web_view": 0,
+ "hide_toolbar": 0,
+ "in_create": 0,
+ "index_web_pages_for_search": 1,
+ "is_calendar_and_gantt": 0,
+ "is_submittable": 0,
+ "is_tree": 0,
+ "is_virtual": 0,
+ "issingle": 0,
+ "istable": 0,
+ "links": [],
+ "make_attachments_public": 0,
+ "max_attachments": 0,
+ "modified": "2026-10-23 10:00:00.000000",
+ "module": "Fitout",
+ "name": "Fit Out Work Package",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "protect_attached_files": 0,
+ "queue_in_background": 0,
+ "quick_entry": 0,
+ "read_only": 0,
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "package_title,project,subcontractor",
+ "show_name_in_global_search": 0,
+ "show_preview_popup": 0,
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "package_title",
+ "track_changes": 1,
+ "track_seen": 0,
+ "track_views": 0,
+ "translated_doctype": 0
+}

@@ -1,0 +1,41 @@
+[
+ {
+  "app": "fitout",
+  "charts": [],
+  "content": "[{\"id\":\"foCmdCentre01\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Fitout Command Centre\",\"col\":12}}]",
+  "custom_blocks": [
+   {
+    "custom_block_name": "Fitout Command Centre",
+    "doctype": "Workspace Custom Block",
+    "label": "Fitout Command Centre",
+    "parentfield": "custom_blocks",
+    "parenttype": "Workspace"
+   }
+  ],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "external_link": null,
+  "for_user": null,
+  "hide_custom": 0,
+  "icon": null,
+  "indicator_color": "blue",
+  "is_hidden": 0,
+  "label": "Fit Out",
+  "link_to": null,
+  "link_type": "DocType",
+  "links": [],
+  "modified": "2026-10-23 10:00:00.000000",
+  "module": "Fitout",
+  "name": "Fit Out",
+  "number_cards": [],
+  "parent_page": null,
+  "public": 1,
+  "quick_lists": [],
+  "restrict_to_domain": null,
+  "roles": [],
+  "sequence_id": 0.0,
+  "shortcuts": [],
+  "title": "Fit Out",
+  "type": "Workspace"
+ }
+]

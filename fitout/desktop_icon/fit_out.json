@@ -1,0 +1,20 @@
+{
+ "app": "fitout",
+ "bg_color": "blue",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon_type": "Link",
+ "idx": 0,
+ "label": "Fit Out",
+ "link_to": "Fit Out",
+ "link_type": "Workspace Sidebar",
+ "logo_url": "/assets/fitout/icons/desktop_icons/solid/fit_out.svg",
+ "modified": "2026-10-23 10:00:00.000000",
+ "modified_by": "Administrator",
+ "name": "Fit Out",
+ "owner": "Administrator",
+ "restrict_removal": 0,
+ "roles": [],
+ "standard": 1
+}
