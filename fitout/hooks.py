@@ -7,7 +7,7 @@ app_license = "mit"
 
 required_apps = ["erpnext"]
 
-app_logo_url = "/assets/fitout/icons/desktop_icons/solid/fit_out.svg"
+app_logo_url = "/assets/fitout/images/fitout_logo.png"
 
 after_install = "fitout.install.after_install"
 after_migrate = "fitout.install.after_migrate"

@@ -41,7 +41,7 @@ fails (permissions), set it by hand:
 - **Fit Out** Workspace Sidebar (Dashboard, Projects, Estimation & BOQ, Procurement,
   Inventory, Subcontractors, Site Execution, Variations, Invoicing, Accounting, Document
   Control, Handover, Workflow Configuration, Reports, Settings).
-- **Fit Out** desktop tile with its own icon (`public/icons/desktop_icons`).
+- **Fit Out** desktop tile and app logo use the HF logo (`public/icons/desktop_icons`, `public/images/fitout_logo.png`).
 
 ### Doctypes (module Fitout)
 | Area | Doctypes |
